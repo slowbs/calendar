@@ -35,7 +35,7 @@ class HomeController extends Controller
     public function index()
     {
             $events = [];
-            $data = Event::get();
+            $data = Event::where('status',1)->get();
             if($data->count()) {
                 foreach ($data as $key => $value) {
                     if($value->room_id == 1){
@@ -72,14 +72,15 @@ class HomeController extends Controller
                 ]); 
             //dd($calendar,$data,$events,$value);
             $room = Room::get();
-            //dd($calendar);
-           return view('admin.event', compact('calendar','room'));
+            $num = DB::table('events')->where('events.status','=','0')->count();
+            //dd($num);
+            return view('admin.event', compact('calendar','room','num'));
             
         }
 
         public function edit($id)
         {
-            
+            Date::setLocale('th');
             //$fuck = Event::where('id',$key)->get();
             $event = DB::table('events')
             ->leftJoin('rooms','events.room_id','=','rooms.rid')

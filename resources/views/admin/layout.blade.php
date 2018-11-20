@@ -47,11 +47,14 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
+                                    @if($num != 0)
+                                    <span class="badge badge-warning">{{ $num }}</span>
+                                    @endif
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </a>
+                                    {{-- <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </a> --}}
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal3">yes
                                 </a>
                                     <a class="dropdown-item" href="{{ url('list') }}">{{ __('List') }}</a>
@@ -170,6 +173,12 @@
       </div>
 </div>
 </div>
+<script type="text/javascript">
+    @if (count($errors) > 0)
+        $('#exampleModal3').modal('show');
+    @endif
+    </script>
     </body>
+
     @yield('script')
 </html>

@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                   <th scope="row">วันที่ใช้งาน</th>
-                  <td>{{ Date::parse($events->start_date)->format('j F Y') }} - เวลา {{ Date::parse($events->start_date)->format('j F Y') }}</td>
+                  <td>{{ Date::parse($events->start_date)->format('j F Y') }} - {{ Date::parse($events->start_date)->format('j F Y') }}</td>
                   {{-- <td>{{ Date::parse($event->start_date)->format('j F Y')}} - {{ \Carbon\Carbon::parse($event->end_date)->format('d F Y')}}</td> --}}
                 </tr>
                 <tr>

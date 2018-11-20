@@ -56,4 +56,6 @@ Route::get('home', 'HomeController@index')->name('home');
 
 /* Route::get('/list', 'ListController@index')->name('list'); */
 
+Route::get('check/{id}', 'ListController@check');
+Route::get('uncheck/{id}', 'ListController@uncheck');
 Route::resource('list','ListController');
