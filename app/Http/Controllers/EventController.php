@@ -26,7 +26,8 @@ class EventController extends Controller
     public function index()
     {
         $events = [];
-        $data = Event::get();
+        /* $data = Event::get(); */
+        $data = Event::where('status',1)->get();
         if($data->count()) {
             foreach ($data as $key => $value) {
                 if($value->room_id == 1){

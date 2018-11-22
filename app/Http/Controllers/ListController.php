@@ -7,6 +7,7 @@ use Laravel\Event;
 use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Date\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
 class ListController extends Controller
 {
@@ -19,6 +20,8 @@ class ListController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $num = DB::table('events')->where('events.status','=','0')->count();
+        View::share('num', $num);
     }
 
     public function index()
@@ -26,9 +29,12 @@ class ListController extends Controller
         //
         //echo 'Fuck';
         Date::setLocale('th');
-        $list = Event::get();
+        /* $list = Event::get(); */
+        $list = DB::table('events')
+            ->leftJoin('rooms','events.room_id','=','rooms.rid')
+            ->get();
         //dd($list);
-        $num = DB::table('events')->where('events.status','=','0')->count();
+        /* $num = DB::table('events')->where('events.status','=','0')->count(); */
         return view('admin.list', compact('list','num'));
     }
 

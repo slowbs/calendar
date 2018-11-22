@@ -55,9 +55,12 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     {{-- <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </a> --}}
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal3">yes
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal3">Register
                                 </a>
-                                    <a class="dropdown-item" href="{{ url('list') }}">{{ __('List') }}</a>
+                                    <a class="dropdown-item" href="{{ url('list') }}">{{ __('List') }}&nbsp;&nbsp;&nbsp;
+                                        @if($num != 0)
+                                        <span class="badge badge-warning">{{ $num }}</span>
+                                        @endif</a>
                                     </a>
                                     <div role="separator" class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

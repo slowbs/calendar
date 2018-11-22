@@ -3,7 +3,7 @@
 @endsection
 @section('content')
 <div class="container" align="center">
-        <div class="col-md-11 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2">
             <h1>ประชุม อิอิ </h1>
             <div class="panel panel-default">
                 
@@ -20,66 +20,69 @@
 
                       </div>
 
-                      <div class="col-xs-4 col-sm-4 col-md-4">
-                        <div class="form-group">
+                      <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group" align="left">
                             {!! Form::label('title','ชื่อการประชุม:') !!}
                             <div class="">
                               {{-- <h1>{{ $event->name }}</h1> --}}
                             {!! Form::text('title', "$events->title", ['class' => 'form-control']) !!}
-                            {!! $errors->first('title', '<p class="alert alert-danger">:message</p>') !!}
+                            {!! $errors->editerror->first('title', '<p class="alert alert-danger">:message</p>') !!}
                             </div>
                         </div>
                       </div>
 
-                      <div class="col-xs-4 col-sm-4 col-md-4">
-                        <div class="form-group">
-                            {!! Form::label('name','ชื่อผู้แจ้ง:') !!}
+                      <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group" align="left">
+                            {!! Form::label('event_name','ชื่อผู้แจ้ง:') !!}
                             <div class="">
-                            {!! Form::text('name', $events->name, ['class' => 'form-control']) !!}
-                            {!! $errors->first('name', '<p class="alert alert-danger">:message</p>') !!}
+                            {!! Form::text('event_name', $events->name, ['class' => 'form-control']) !!}
+                            {!! $errors->editerror->first('event_name', '<p class="alert alert-danger">:message</p>') !!}
                             </div>
                         </div>
                       </div>
 
-                      <div class="col-xs-4 col-sm-4 col-md-4">
-                        <div class="form-group">
+                      <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group" align="left">
                             {!! Form::label('describe','รายละเอียด:') !!}
                             <div class="">
                             {!! Form::text('describe', $events->describe, ['class' => 'form-control']) !!}
-                            {!! $errors->first('describe', '<p class="alert alert-danger">:message</p>') !!}
+                            {!! $errors->editerror->first('describe', '<p class="alert alert-danger">:message</p>') !!}
                             </div>
                         </div>
                       </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" align="left">
+                      <div class='row'>
+                      <div class="col-md-6">
                       {!! Form::label('start_date','วันที่:') !!}
-                      <div class="row">
-                      <div class="col-md-6">
-                      {!! Form::date('start_date', $events->start_date, ['class' => 'form-control']) !!}
-                      {!! $errors->first('start_date', '<p class="alert alert-danger">:message</p>') !!}
                       </div>
-                      <div class="col-md-6">
-                        {!! Form::date('end_date', $events->end_date, ['class' => 'form-control']) !!}
-                        {!! $errors->first('end_date', '<p class="alert alert-danger">:message</p>') !!}
-                        </div>
+                    </div>
+                      <div class="row">
+                      <div class="col-md-4">
+                      {!! Form::date('start_date', $events->start_date, ['class' => 'form-control']) !!}
+                      {!! $errors->editerror->first('start_date', '<p class="alert alert-danger">:message</p>') !!}
+                      </div><span class="align-bottom" style="line-height:200%">-</span>
+                      <div class="col-md-4">
+                       {!! Form::date('end_date', $events->end_date, ['class' => 'form-control']) !!}
+                      {!! $errors->editerror->first('end_date', '<p class="alert alert-danger">:message</p>') !!}
+                      </div>
                     </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" align="left">
                       {!! Form::label('start_time','เวลา:') !!}
                       {{-- <div class="row d-flex justify-content-center"> --}}
                       <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-md-4">
                       {!! Form::time('start_time', $events->start_time, ['class' => 'form-control']) !!}
-                      {!! $errors->first('start_time', '<p class="alert alert-danger">:message</p>') !!}
-                      </div>
-                      <div class="col-md-6">
+                      {!! $errors->editerror->first('start_time', '<p class="alert alert-danger">:message</p>') !!}
+                      </div><span class="align-bottom" style="line-height:200%">-</span>
+                      <div class="col-md-4">
                         {!! Form::time('end_time', $events->end_time, ['class' => 'form-control']) !!}
-                        {!! $errors->first('end_time', '<p class="alert alert-danger">:message</p>') !!}
+                        {!! $errors->editerror->first('end_time', '<p class="alert alert-danger">:message</p>') !!}
                         </div>
                     </div>
-
                   </div>
-                  <div class="form-group">
+                  <div class="form-group" align="left">
                     <label for="room">ห้องประชุม</label>
                   <div class="row">
                       <div class="col-xs-12 col-sm-12 col-md-12">
@@ -90,7 +93,7 @@
                     {{ $object->roomname }} </option>
                   @endforeach
                   </select>
-                  {!! $errors->first('room', '<p class="alert alert-danger">:message</p>') !!}
+                  {!! $errors->editerror->first('room', '<p class="alert alert-danger">:message</p>') !!}
                     </div>
                   </div>
                     @endforeach
@@ -100,7 +103,7 @@
                           {!! Form::label('start_date','Start Date:') !!}
                           <div class="">
                           {!! Form::date('start_date', $event->start_date, ['class' => 'form-control']) !!}
-                          {!! $errors->first('start_date', '<p class="alert alert-danger">:message</p>') !!}
+                          {!! $errors->editerror->first('start_date', '<p class="alert alert-danger">:message</p>') !!}
                           </div>
                         </div>
                       </div>
@@ -110,13 +113,14 @@
                           {!! Form::label('end_date','End Date:') !!}
                           <div class="">
                           {!! Form::date('end_date', $event->end_date, ['class' => 'form-control']) !!}
-                          {!! $errors->first('end_date', '<p class="alert alert-danger">:message</p>') !!}
+                          {!! $errors->editerror->first('end_date', '<p class="alert alert-danger">:message</p>') !!}
                           </div>
                         </div>
                       </div> --}}
-
-                      <div class="col-xs-1 col-sm-1 col-md-1 text-center"> &nbsp;<br/>
+                    </div>
+                      <div class="text-right">
                       {!! Form::submit('Update',['class'=>'btn btn-primary']) !!}
+                      <a class="btn btn-secondary" href="{{ url('home') }}">ย้อนกลับ</a>
                       </div>
                     </div>
                    {!! Form::close() !!}

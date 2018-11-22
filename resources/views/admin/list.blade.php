@@ -30,6 +30,7 @@
                                     <th>Name</th>
                                     <th>Date</th>
                                     <th>Time</th>
+                                    <th>Room</th>
                                     <th width="160px">Action</th>
                                 </tr>
                                 </thead>
@@ -42,7 +43,8 @@
                                     <td>{{ $product->describe }}</td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ Date::parse($product->start_date)->format('j F Y') }} - <br>{{ Date::parse($product->start_date)->format('j F Y') }}</td>
-                                    <td>{{ Date::parse($product->start_time)->format('h:i') }} น. - {{ Date::parse($product->end_time)->format('H:i') }} น.</td>
+                                    <td>{{ Date::parse($product->start_time)->format('h:i') }} น. - <br>{{ Date::parse($product->end_time)->format('H:i') }} น.</td>
+                                    <td>{{ $product->roomname }}</td>
                                     <td>
                                         <form method="POST" action="{{route('list.destroy', $product->id)}}">
                                             @if($product->status == 2) 
@@ -64,7 +66,7 @@
                                                     @csrf 
                                                     @method('DELETE')
                                                     {{-- <a class="btn btn-info" type="submit"><i class="far fa-edit"></i>Edit</a> --}}
-                                                    <button class="btn btn-danger" type="submit"><i class="far fa-trash-alt"></i></button>
+                                                    <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure?')"><i class="far fa-trash-alt"></i></button>
                                                     {{-- <input class="btn btn-danger"  value="DELETE" type="submit" style="width:100px"> --}}
                                                     </form>
                                         <!-- </form> -->

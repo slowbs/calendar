@@ -25,6 +25,8 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $num = DB::table('events')->where('events.status','=','0')->count();
+        View::share('num', $num);
     }
 
     /**
@@ -72,9 +74,9 @@ class HomeController extends Controller
                 ]); 
             //dd($calendar,$data,$events,$value);
             $room = Room::get();
-            $num = DB::table('events')->where('events.status','=','0')->count();
+            /* $num = DB::table('events')->where('events.status','=','0')->count(); */
             //dd($num);
-            return view('admin.event', compact('calendar','room','num'));
+            return view('admin.event', compact('calendar','room'));
             
         }
 
@@ -96,7 +98,7 @@ class HomeController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'name' => 'required',
+            'event_name' => 'required',
             'describe' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
@@ -107,13 +109,13 @@ class HomeController extends Controller
  
         if ($validator->fails()) {
         	\Session::flash('warnning','Please enter the valid details');
-            return Redirect::to('/edit/'.$id)->withInput()->withErrors($validator);
+            return Redirect::to('/edit/'.$id)->withInput()->withErrors($validator,'editerror');
         }
 
 
         //dd($id);
         $event= \Laravel\Event::find($id);
-        $event->name=$request->get('name');
+        $event->name=$request->get('event_name');
         $event->title=$request->get('title');
         $event->describe=$request->get('describe');
         $event->start_date = $request->get('start_date');
