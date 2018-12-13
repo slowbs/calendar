@@ -146,7 +146,7 @@ class HomeController extends Controller
  
         if ($validator->fails()) {
         	\Session::flash('warnning','Please enter the valid details');
-            return Redirect::to('/home')->withInput()->withErrors($validator);
+            return Redirect::to('/home')->withInput()->withErrors($validator,'eventerror');
         }
  
         $event = new Event;

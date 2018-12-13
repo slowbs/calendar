@@ -102,8 +102,8 @@
   </div>
 </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         {!! Form::submit('Add Event',['class'=>'btn btn-primary']) !!}
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
       {!! Form::close() !!}
     </div>

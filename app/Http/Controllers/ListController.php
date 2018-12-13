@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Date\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
+use App;
 
 class ListController extends Controller
 {
@@ -29,6 +30,7 @@ class ListController extends Controller
         //
         //echo 'Fuck';
         Date::setLocale('th');
+        App::setLocale('th');
         /* $list = Event::get(); */
         $list = DB::table('events')
             ->leftJoin('rooms','events.room_id','=','rooms.rid')

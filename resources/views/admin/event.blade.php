@@ -44,21 +44,21 @@
             {!! Form::label('title','ชื่อการประชุม:') !!}
             <div class="">
             {!! Form::text('title', null, ['class' => 'form-control']) !!}
-            {!! $errors->first('title', '<p class="alert alert-danger">:message</p>') !!}
+            {!! $errors->eventerror->first('title', '<p class="alert alert-danger">:message</p>') !!}
         </div>
       </div>
       <div class="form-group">
         {!! Form::label('describe','รายละเอียดการประชุม:') !!}
         <div class="">
         {!! Form::text('describe', null, ['class' => 'form-control']) !!}
-        {!! $errors->first('describe', '<p class="alert alert-danger">:message</p>') !!}
+        {!! $errors->eventerror->first('describe', '<p class="alert alert-danger">:message</p>') !!}
     </div>
   </div>
   <div class="form-group">
     {!! Form::label('name','ชื่อผู้แจ้ง:') !!}
     <div class="">
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
-    {!! $errors->first('name', '<p class="alert alert-danger">:message</p>') !!}
+    {!! $errors->eventerror->first('name', '<p class="alert alert-danger">:message</p>') !!}
 </div>
 </div>
 <div class="form-group">
@@ -66,11 +66,11 @@
   <div class="row">
   <div class="col-md-6">
   {!! Form::date('start_date', null, ['class' => 'form-control']) !!}
-  {!! $errors->first('start_date', '<p class="alert alert-danger">:message</p>') !!}
+  {!! $errors->eventerror->first('start_date', '<p class="alert alert-danger">:message</p>') !!}
   </div>
   <div class="col-md-6">
     {!! Form::date('end_date', null, ['class' => 'form-control']) !!}
-    {!! $errors->first('end_date', '<p class="alert alert-danger">:message</p>') !!}
+    {!! $errors->eventerror->first('end_date', '<p class="alert alert-danger">:message</p>') !!}
     </div>
 </div>
 </div>
@@ -80,11 +80,11 @@
   <div class="row">
   <div class="col-md-6">
   {!! Form::time('start_time', null, ['class' => 'form-control']) !!}
-  {!! $errors->first('start_time', '<p class="alert alert-danger">:message</p>') !!}
+  {!! $errors->eventerror->first('start_time', '<p class="alert alert-danger">:message</p>') !!}
   </div>
   <div class="col-md-6">
     {!! Form::time('end_time', null, ['class' => 'form-control']) !!}
-    {!! $errors->first('end_time', '<p class="alert alert-danger">:message</p>') !!}
+    {!! $errors->eventerror->first('end_time', '<p class="alert alert-danger">:message</p>') !!}
     </div>
 </div>
   
@@ -98,7 +98,7 @@
 <option value="{{ $object->rid }} "> {{ $object->roomname }} </option>
 @endforeach
 </select>
-{!! $errors->first('room', '<p class="alert alert-danger">:message</p>') !!}
+{!! $errors->eventerror->first('room', '<p class="alert alert-danger">:message</p>') !!}
   </div>
 </div>
       <div class="modal-footer">
