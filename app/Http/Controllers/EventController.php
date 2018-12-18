@@ -14,7 +14,7 @@ use Jenssegers\Date\Date;
 use Illuminate\Support\Facades\View;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-
+use DateTime;
 
 
 class EventController extends Controller
@@ -30,6 +30,7 @@ class EventController extends Controller
         $data = Event::where('status',1)->get();
         if($data->count()) {
             foreach ($data as $key => $value) {
+                //dd($value->start_date);
                 if($value->room_id == 1){
                     $color = 'green';
                 }
@@ -39,12 +40,14 @@ class EventController extends Controller
                 $events[] = Calendar::event(
                     $value->title,
                     true,
-                    new \DateTime($value->start_date),
-                    new \DateTime($value->end_date.' +1 day'),
+                    new \DateTime($value->start_date.$value->start_time),
+                    new \DateTime($value->end_date.$value->end_time),
                     $value->id,
                     // Add color and link on event
                 [
                      'color' => $color,
+                     'allDay' => false,
+                     'displayEventTime' => false,
                      'url' => 'show/'.$value->id,
                      /* 'url' => '#', */
                  ]
@@ -53,7 +56,8 @@ class EventController extends Controller
         }
         $calendar = Calendar::addEvents($events)
         ->setOptions([
-            'locale' => 'th'
+            'locale' => 'th',
+            'slotLabelFormat' => 'H:mm'
             ])
             ->setCallbacks([ //set fullcalendar callback options (will not be JSON encoded)
                 'eventClick' => 'function() {
