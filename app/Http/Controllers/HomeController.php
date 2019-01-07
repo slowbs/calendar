@@ -25,6 +25,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        //$this->middleware('role');
         $num = DB::table('events')->where('events.status','=','0')->count();
         View::share('num', $num);
     }
@@ -49,12 +50,13 @@ class HomeController extends Controller
                     $events[] = Calendar::event(
                         $value->title,
                         true,
-                        new \DateTime($value->start_date),
-                        new \DateTime($value->end_date.' +1 day'),
+                        new \DateTime($value->start_date.$value->start_time),
+                        new \DateTime($value->end_date.$value->end_time),
                         $value->id,
                         // Add color and link on event
                     [
                          'color' => $color,
+                         'allDay' => false,
                          'url' => 'edit/'.$value->id,
                          /* 'url' => '#', */
                      ]
@@ -63,7 +65,9 @@ class HomeController extends Controller
             }
             $calendar = Calendar::addEvents($events)
             ->setOptions([
-                'locale' => 'th'
+                'locale' => 'th',
+                'slotLabelFormat' => 'H:mm',
+                'timeFormat' => 'H:mm'
                 ])
                 ->setCallbacks([ //set fullcalendar callback options (will not be JSON encoded)
                     'eventClick' => 'function() {

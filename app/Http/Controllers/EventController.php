@@ -47,8 +47,7 @@ class EventController extends Controller
                 [
                      'color' => $color,
                      'allDay' => false,
-                     'displayEventTime' => false,
-                     'url' => 'show/'.$value->id,
+                     'url' => 'show/'.$value->id
                      /* 'url' => '#', */
                  ]
                 );
@@ -57,7 +56,10 @@ class EventController extends Controller
         $calendar = Calendar::addEvents($events)
         ->setOptions([
             'locale' => 'th',
-            'slotLabelFormat' => 'H:mm'
+            'slotLabelFormat' => 'H:mm',
+            //'maxTime' => '24:00:00',
+            //'nextDayThreshold' => '24:00:00',
+            'timeFormat' => 'H:mm'
             ])
             ->setCallbacks([ //set fullcalendar callback options (will not be JSON encoded)
                 'eventClick' => 'function() {
