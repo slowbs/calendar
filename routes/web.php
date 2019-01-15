@@ -25,9 +25,9 @@ Route::post('/admin/add', 'HomeController@addEvent')->name('events.add2');
 
 Route::put('update/{id}', 'HomeController@updateEvent')->name('events.update');
 
-Route::get('add', function () {
+/* Route::get('add', function () {
     return view('add');
-});
+}); */
 
 Route::get('edit/{id}', 'HomeController@edit');
 /* Route::get('edit/{event}/edit', 'HomeController@update'); */

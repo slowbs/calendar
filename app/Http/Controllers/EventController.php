@@ -21,7 +21,7 @@ class EventController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest');
+        //$this->middleware('guest');
     }
     public function index()
     {
@@ -62,11 +62,11 @@ class EventController extends Controller
             'timeFormat' => 'H:mm'
             ])
             ->setCallbacks([ //set fullcalendar callback options (will not be JSON encoded)
-                'eventClick' => 'function() {
-                    /* $("#exampleModal").modal("show"); */
-                    /* console.log("fuck"); */
-                    /* console.log("fuck"); */
-                 }'
+                /* 'eventClick' => 'function() {
+                    $("#exampleModal").modal("show");
+                    console.log("fuck");
+                    console.log("fuck");
+                 }' */
             ]); 
         //dd($calendar,$data,$events,$value);
         $room = Room::get();

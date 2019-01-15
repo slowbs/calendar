@@ -7,12 +7,15 @@
 <div class="container" align="center">
         <div class="col-md-11 col-md-offset-2">
             <h1>ประชุม อิอิ </h1>
+            {{-- @if(Auth::check())
+              <h1>ฟัก</h1>
+            @endif --}}
             <div align="right">
                     {{-- <a class="btn btn-success" href="{{ url('add') }}"> Create New Product</a> --}}
-                    <!-- Button trigger modal -->
-{{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+                    {{-- button trigger modal --}}
+@if(Auth::check())<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
 จองห้องประชุม
-</button> --}}
+</button>@endif
 
 </div>
 <br>
@@ -21,6 +24,7 @@
 </div>
 </div>
 <!-- Modal -->
+@if(Auth::check())
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -109,6 +113,7 @@
     </div>
   </div>
 </div>
+@endif
 @endsection
 @section('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
@@ -123,6 +128,5 @@ $('#exampleModal2').modal('show');
 });
 </script>
 @endif
-{!! $calendar->script() !!}
 @endsection
 {{-- @include('modal') --}}

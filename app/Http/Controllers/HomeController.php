@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        //$this->middleware('role');
+        $this->middleware('admin');
         $num = DB::table('events')->where('events.status','=','0')->count();
         View::share('num', $num);
     }
