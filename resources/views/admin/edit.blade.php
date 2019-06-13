@@ -4,7 +4,7 @@
 @section('content')
 <div class="container" align="center">
         <div class="col-md-8 col-md-offset-2">
-            <h1>ประชุม อิอิ </h1>
+            <h1>ประชุม</h1>
             <div class="panel panel-default">
                 
               @foreach($event as $events)

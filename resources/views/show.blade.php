@@ -4,13 +4,13 @@
 @section('content')
 <div class="container" align="center">
         <div class="col-md-8 col-md-offset-2">
-            <h1>ประชุม อิอิ </h1>
+            <h1>ประชุม</h1>
             @foreach($event as $events)
             <h2> {{ $events->roomname}} </h2>
             <table class="table table-sm">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col" style="width:300px">หัวข้อ</th>
+                  <th scope="col" style="width:100px">หัวข้อ</th>
                   <th scope="col">รายละเอียด</th>
                 </tr>
               </thead>

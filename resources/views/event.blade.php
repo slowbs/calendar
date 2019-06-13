@@ -6,7 +6,7 @@
 @section('content')
 <div class="container" align="center">
         <div class="col-md-11 col-md-offset-2">
-            <h1>ประชุม อิอิ </h1>
+            <h1>ประชุม 55</h1>
             {{-- @if(Auth::check())
               <h1>ฟัก</h1>
             @endif --}}

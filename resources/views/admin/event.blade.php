@@ -6,7 +6,7 @@
 @section('content')
 <div class="container" align="center">
         <div class="col-md-11 col-md-offset-2">
-            <h1>ประชุม อิอิ </h1>
+            <h1>ประชุม</h1>
             <div align="right">
                     {{-- <a class="btn btn-success" href="{{ url('add') }}"> Create New Product</a> --}}
                     <!-- Button trigger modal -->
